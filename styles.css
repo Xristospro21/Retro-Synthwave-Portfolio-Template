@@ -1,0 +1,530 @@
+:root {
+  --primary-color: white;
+  --secondary-color: rgba(0, 0, 0, 0.7);
+  --highlight-color: rgba(255, 255, 255, 0.1);
+  --border-color: white;
+  --neon-pink: #ff0099;
+  --neon-blue: #00ffff;
+  --button-bg: #ff0099;
+  --button-hover-bg: #00ffff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounceIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+body {
+  font: 24px Helvetica;
+  color: var(--primary-color);
+  background: none; /* Remove background from body */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 2s ease-in-out;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  z-index:-1;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  background-image: url("images/peakpx.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index:-1;
+}
+#myVideo{
+position:fixed;
+top:0;
+left:0;
+width:100vw;
+height:100vh;
+object-fit:cover;
+z-index:-1;
+}
+.container {
+  max-width: 3000px;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: transparent;
+  font-family: cursive;
+  animation: slideIn 1s ease-in-out;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+h2{
+  text-align: center;
+}
+
+/* Move social icons to the right */
+#social-icon {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.social-icons a {
+  color: var(--primary-color);
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+
+.logo img {
+  width: 100px;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo img:hover {
+  transform: rotate(360deg);
+}
+
+nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; /* Make background transparent */
+}
+
+#nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#nav li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+	
+#nav a {
+  display: block;
+  padding: 0.5em 15px;
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--primary-color);
+  font: 18px arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+#nav a:hover {
+  background-color: var(--primary-color);
+  color: black;
+  border-radius: 5px;
+  transform: scale(1.1);
+}
+
+
+main {
+  flex: 1;
+  margin-top: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.summary {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.summary h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+/* Ensure to add these styles in the styles.css file */
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adjust the gap between the buttons */
+}
+
+.button {
+  background-color: var(--button-bg);
+  color: var(--primary-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--button-hover-bg);
+  transform: scale(1.1);
+}
+
+/* Ensure borders for project boxes grow only if needed */
+.project-box {
+  background-color: var(--highlight-color);
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out, border 0.3s ease-in-out;
+  max-width: 300px;
+  margin: 10px;
+  border: 2px solid transparent; /* Start with a transparent border */
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+.project-box:hover {
+  transform: scale(1.05);
+  border: 2px solid var(--neon-pink); /* Only grow border on hover */
+  box-shadow: 0 0 15px var(--neon-pink);
+}
+
+.project-box:hover::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid var(--neon-blue);
+  border-radius: 10px;
+  z-index: -1;
+  box-shadow: 0 0 15px var(--neon-blue);
+}
+
+
+.technologies {
+  width: 100%;
+  text-align: center;
+}
+
+.technologies h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.tech-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.tech-box {
+  padding: 50px; /* Adjust padding as needed */
+  margin: 50px; /* Adjust margin as needed */
+  border-radius: 10px;
+  width: 150px; /* Set a fixed width to ensure alignment */
+  height: 200px; /* Set a fixed height to ensure alignment */
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+}
+
+.tech-box:hover {
+  transform: scale(1.05);
+}
+
+.tech-box img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.tech-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.tech-description {
+  font-size: 18px;
+  text-align: center;
+}
+
+
+.about {
+  width: 100%;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-content .graphic-design {
+  width: 100px;
+  height: 100px;
+  background-color: var(--highlight-color);
+  border-radius: 50%;
+  margin-bottom: 20px;
+  animation: bounceIn 1s ease-in-out;
+}
+
+footer {
+  background-color: transparent; /* Make background transparent */
+  color: var(--primary-color);
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  nav {
+    margin-top: 20px;
+  }
+
+  main {
+    margin-top: 40px;
+  }
+
+  .project-box {
+    max-width: 90%;
+    margin: 10px auto;
+  }
+
+  .tech-box {
+    max-width: 90%;
+    margin: 10px auto;
+  }
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+.project-box {
+  background-color: var(--highlight-color);
+  padding: 5px;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  text-align: center;
+}
+
+.project-box:hover {
+  transform: scale(1.05);
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+#nav .social-icon {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+#nav .social-icon a img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+#nav .social-icon a img:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #nav li {
+    margin-bottom: 10px;
+  }
+
+  #nav .social-icon {
+    margin-left: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.project-box {
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+.dynamic-title {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.title-text {
+  font-size: 36px;
+  color: #fff;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .dynamic-title {
+    font-size: 24px;
+  }
+}
+
+.about {
+  text-align: center;
+  padding: 50px 0;
+  color: #fff;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-gif {
+  width: 100%;
+  max-width: 200px;
+  margin-top: 20px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.about-gif:hover {
+  transform: scale(1.1);
+}
+
+.timeline {
+  width: 100%;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timeline-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.timeline-item:hover {
+  transform: scale(1.05);
+}
+
+.timeline-item h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.timeline-item p {
+  font-size: 18px;
+}
+
+  .timeline-item {
+    margin: 10px 0;
+  }
+/* Flip animation */
+.about-gif {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.about-gif.flipped {
+  transform: rotateY(180deg);
+}
+
